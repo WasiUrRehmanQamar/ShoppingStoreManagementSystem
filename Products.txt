@@ -1,0 +1,12 @@
+chicken	210	7
+bbbb	369	258
+dddd	36	254
+eeee	365	254
+fff	145	92
+bread	25	147
+eggs	40	35
+qwer	12	20
+cccc	30	83
+oil	140	3
+watch	500	8
+mobile	55000	5

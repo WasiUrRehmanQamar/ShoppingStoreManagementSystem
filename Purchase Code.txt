@@ -1,0 +1,75 @@
+
+void Product::Purchase(){
+	
+	char y;
+	int pdata=0, itemPrice=0;
+	cout <<endl<<endl;
+	cout<<"\t\t\t@@@@@@@@@@@@@@@@@@@@@ "<<endl<<endl;
+    cout<<"\t\t\t  Online_Shopping_Store   "<<endl<<endl;
+	cout<<"\t\t\t@@@@@@@@@@@@@@@@@@@@@ "<<endl<<endl;
+	cout <<endl<<endl;
+	
+	
+	do{
+		int j=0, k=0, found=0, data=0, price=0;
+
+		cout << "\tEnter Data :\t";
+		cin >> pdata;
+		
+		ifstream input("user.txt");
+		while (input>>data>>price){
+			k++;
+			if(pdata == data){
+				
+				itemPrice = price;
+				found++;	
+				j++;
+			}
+		}
+		input.close();
+	
+		if(found==0){
+			cout << "Sorry, This Item Does Not Exist...";
+		}
+		else {
+			cout << "\n\tItem Purchased ..."<<endl<<endl;
+			ofstream out;
+			out.open("purchase.txt", ios::app);
+			if(!out){"\n\n\tError in opening File.";}
+			else {
+				
+				out << pdata << "\t" << itemPrice <<endl;
+			}
+			out.close();
+		}
+		
+		cout << "Do you want to Purchase more Items :\t";
+		cin >> y;
+	}
+	while (y=='y');	
+	
+	system ("cls"); system ("color F0");
+	cout <<endl<<endl<<endl<<endl;
+	cout<<"\t\t\t@@@@@@@@@@@@@@@@@@@ "<<endl<<endl;
+    cout<<"\t\t\t  UMK_SHOPPING_MALL    "<<endl<<endl;
+	cout<<"\t\t\t@@@@@@@@@@@@@@@@@@@ "<<endl<<endl;
+	cout <<endl<<endl;
+
+	cout << "\t\t\tPurchased Items"<<endl<<endl;
+	
+	int sum=0;
+	
+
+	ifstream in("purchase.txt");
+	while(in>>pdata>>itemPrice){
+		cout << "\n\n\t\t\t\t"<< pdata << "\t" << itemPrice <<endl;
+		sum += itemPrice;
+	}
+
+	in.close();
+	
+	cout << "\n\t\tYour Total bill is :\t"<< sum <<endl<<endl;
+	cout << "\n\n\t\t\tThanks for Shopping with us ..."<<endl<<endl;
+	remove("purchase.txt");
+
+}

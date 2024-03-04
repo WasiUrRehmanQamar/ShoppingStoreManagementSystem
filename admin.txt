@@ -1,0 +1,3 @@
+Wasi	12	1234	Qamar
+Hamza	12340	1234	Sharif
+Mukarram	9630	1234	Shahbaz
